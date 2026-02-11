@@ -11,10 +11,12 @@ wss.on('connection', (ws) => {
   ws.on('error',(error) => {
     console.error('WebSocket error:', error);
   });
-  
+
 ws.on('message', (data) => {
-ws.send(data);
+
+  ws.clients.forEach((client) => (clients.send(data.toString())));
 
 });
 
+console.log("connected");
 });
